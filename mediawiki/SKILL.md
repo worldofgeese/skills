@@ -14,7 +14,7 @@ description: Read, create, edit, search, and upload to the White Cat Adventures 
 
 ## Credentials
 
-- **Bot username:** `Mother@Mother@Spöke`
+- **Bot username:** `Mother@Spöke`
 - **Bot password:** Stored as environment variable, `WHITE_CAT_ADVENTURES_BOT_TOKEN`
  
 ## Authentication Flow
