@@ -20,7 +20,7 @@ gear or call the ISP.
   `SRM_URL`, `SRM_ACCOUNT`, `SRM_PASSWORD` from the environment.
 - The script is **read-only** - it only calls `get`/`info`/`list`/`ping_start`
   and then logs out. It changes no settings.
-- The router LAN address is typically `http://192.168.99.1:8000`. The web UI
+- The router LAN address defaults to `http://192.168.1.1:8000` (Synology factory default); set `SRM_URL` if yours differs. The web UI
   redirects to `/webman/index.cgi` (Synology SRM).
 
 ## Run it
@@ -28,7 +28,7 @@ gear or call the ISP.
 ```powershell
 # Prompts securely for the password:
 & "$HOME\.agents\skills\synology-router-diag\scripts\diagnose.ps1" `
-    -RouterUrl http://192.168.99.1:8000 -Account admin
+    -RouterUrl http://192.168.1.1:8000 -Account admin
 
 # Add -Raw to also print the raw JSON of every probe.
 ```
@@ -76,7 +76,7 @@ WiFi) and a final **Verdict** that classifies the fault.
 
 - **WiFi enabled, radios broadcasting, but no internet, gateway pingable,
   public IPs not:** the fault is upstream of the router. If the WAN IP is
-  private (e.g. `192.168.0.2`), the ONT/modem is in **router mode** and its own
+  private (a `10.x`, `172.16-31.x`, or `192.168.x` address), the ONT/modem is in **router mode** and its own
   internet session is down, or it should be **bridged**. -> ISP issue; have them
   verify the WAN/PPPoE session and re-provision. A solid-green ONT optical light
   means the *fiber* is fine but says nothing about the *service session*.

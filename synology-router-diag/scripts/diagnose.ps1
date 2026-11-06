@@ -10,12 +10,12 @@
   prompt.
 
   Environment variables (optional):
-    SRM_URL       e.g. http://192.168.99.1:8000   (default if unset)
+    SRM_URL       e.g. http://192.168.1.1:8000   (default if unset)
     SRM_ACCOUNT   admin account name
     SRM_PASSWORD  account password
 
 .EXAMPLE
-  ./diagnose.ps1 -RouterUrl http://192.168.99.1:8000 -Account admin
+  ./diagnose.ps1 -RouterUrl http://192.168.1.1:8000 -Account admin
   (prompts securely for the password)
 
 .EXAMPLE
@@ -23,7 +23,7 @@
 #>
 [CmdletBinding()]
 param(
-  [string]$RouterUrl = $(if ($env:SRM_URL) { $env:SRM_URL } else { 'http://192.168.99.1:8000' }),
+  [string]$RouterUrl = $(if ($env:SRM_URL) { $env:SRM_URL } else { 'http://192.168.1.1:8000' }),
   [string]$Account   = $env:SRM_ACCOUNT,
   [string]$Password  = $env:SRM_PASSWORD,
   [switch]$Raw   # also dump raw JSON of each probe
